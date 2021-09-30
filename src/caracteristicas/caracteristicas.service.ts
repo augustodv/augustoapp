@@ -6,10 +6,7 @@ import { UpdateCaracteristicaDto } from './dto/update-caracteristica.dto';
 @Injectable()
 export class CaracteristicasService {
 
-    [x: string]: any;
- 
-
-         
+             
     private caracteristicas = [
         {
             "id": 1,

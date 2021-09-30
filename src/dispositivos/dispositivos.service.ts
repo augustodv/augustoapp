@@ -6,7 +6,7 @@ import { UpdateDispositivoDto } from './dto/update-dispositivo.dto';
 
 @Injectable()
 export class DispositivosService {
-    [x: string]: any;
+    
  
 
          
