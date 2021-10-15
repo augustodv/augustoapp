@@ -1,12 +1,14 @@
 import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common';
-import { Dispositivos } from './dispositivos';
 import { DispositivosService } from './dispositivos.service';
 import { CreateDispositivoDto } from './dto/create-dispositivo.dto';
 import { UpdateDispositivoDto } from './dto/update-dispositivo.dto';
+import { Dispositivo } from './entities/dispositivo.entity';
 
 
 @Controller('dispositivos')
 export class DispositivosController {
+
+  
   constructor(private readonly dispositivosService: DispositivosService) {}
 
     @Get()
@@ -30,12 +32,12 @@ export class DispositivosController {
 
     @Delete(':id')
  remove(@Param('id') id: number) : void {
-   return this.dispositivosService.remove(id);
+   return this.dispositivosService.remove(+id);
  }
 
  @Put(':id')
- update(@Param('id') id: number, @Body() UpdateDispositivoDto: UpdateDispositivoDto) : Dispositivos{
-   return this.dispositivosService.update(id, UpdateDispositivoDto);
+ update(@Param('id') id: number, @Body() UpdateDispositivoDto: UpdateDispositivoDto) : Dispositivo{
+   return this.dispositivosService.update(+id, UpdateDispositivoDto);
  }
 
 
