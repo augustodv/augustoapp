@@ -2,43 +2,41 @@ import { Body, Controller, Get, Param, Post, Delete, Put } from '@nestjs/common'
 import { DispositivosService } from './dispositivos.service';
 import { CreateDispositivoDto } from './dto/create-dispositivo.dto';
 import { UpdateDispositivoDto } from './dto/update-dispositivo.dto';
-import { Dispositivo } from './entities/dispositivo.entity';
 
 
 @Controller('dispositivos')
 export class DispositivosController {
 
-  
-  constructor(private readonly dispositivosService: DispositivosService) {}
 
-    @Get()
-    findAll()  {
-      return this.dispositivosService.findAll();
-      }
+  constructor(private readonly dispositivosService: DispositivosService) { }
 
-
-    @Get (':id')
-    findOne (@Param() params){
-        return this.dispositivosService.findOne(params.id);
-
-    }
+  @Get()
+  findAll() {
+    return this.dispositivosService.findAll();
+  }
 
 
-    @Post()
-    create(@Body() CreateDispositivoDto: CreateDispositivoDto){
-        return this.dispositivosService.create(CreateDispositivoDto)
-    }
+  @Get(':id')
+  findOne(@Param() params) {
+    return this.dispositivosService.findOne(params.id);
+
+  }
 
 
-    @Delete(':id')
- remove(@Param('id') id: number) : void {
-   return this.dispositivosService.remove(+id);
- }
+  @Post()
+  create(@Body() CreateDispositivoDto: CreateDispositivoDto) {
+    return this.dispositivosService.create(CreateDispositivoDto)
+  }
 
- @Put(':id')
- update(@Param('id') id: number, @Body() UpdateDispositivoDto: UpdateDispositivoDto) : Dispositivo{
-   return this.dispositivosService.update(+id, UpdateDispositivoDto);
- }
+
+  @Delete(':id')
+  remove(@Param('id') id: number) {
+    return this.dispositivosService.remove(+id)  }
+
+  @Put(':id')
+  update(@Param('id') id: number, @Body() UpdateDispositivoDto: UpdateDispositivoDto): UpdateDispositivoDto {
+    return this.dispositivosService.update(+id, UpdateDispositivoDto);
+  }
 
 
 
