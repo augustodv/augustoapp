@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Dispositivo } from "src/dispositivos/entities/dispositivo.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 
@@ -8,7 +9,6 @@ export class Caracteristica{
     @Column()
     private valor: string;
    
-    @Column ({default: true })
-    isActive: boolean;
-   
+    @OneToMany(() => Dispositivo, Dispositivo => Dispositivo.caracteirtica)
+    dispositivo: Dispositivo[];
 }

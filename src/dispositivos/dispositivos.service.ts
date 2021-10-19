@@ -6,7 +6,6 @@ import { UpdateDispositivoDto } from './dto/update-dispositivo.dto';
 import { Dispositivo } from './entities/dispositivo.entity';
 
 
-
 @Injectable()
 export class DispositivosService {
 
@@ -21,7 +20,7 @@ export class DispositivosService {
 
 
     findAll() {
-        return this.dispositivosrepository.find();
+        return this.dispositivosrepository.find({relations:['caracteirtica']});
     }
 
     findOne(id: number) {
