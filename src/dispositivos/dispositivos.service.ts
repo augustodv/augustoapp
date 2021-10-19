@@ -1,52 +1,62 @@
 import { Injectable } from '@nestjs/common';
-import { Dispositivos } from './dispositivos';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateDispositivoDto } from './dto/create-dispositivo.dto';
 import { UpdateDispositivoDto } from './dto/update-dispositivo.dto';
+import { Dispositivo } from './entities/dispositivo.entity';
+
 
 
 @Injectable()
 export class DispositivosService {
-    
+
  
 
-         
-    private dispositivos = [
-        {
-            "id": 1,
-            "tipo": "Switch",
-            "nombre": "Tplink SG1100",
-            "id_caracteristica": 12,
-           
-        },
-        {
-            "id": 2,
-            "tipo": "Switch",
-            "nombre": "Tplink SG1200",
-            "id_caracteristica": 22,
-           
-        }
- 
-    ];
-         
-    findAll() {
-        return this.dispositivos;
-            }
-  
-    findOne(id: any) {
-        return this.dispositivos.find(function(dispositivos){
-            return dispositivos.id == id;
-    });
-}
-
-create(CreateDispositivoDto: CreateDispositivoDto) {
-    let nextId = this.dispositivos[this.dispositivos.length-1].id+1;
-    let dispositivo = {
-        "id": nextId,
-        ...CreateDispositivoDto
+    constructor(
+        @InjectRepository(Dispositivo)
+        private dispositivosrepository: Repository<Dispositivo>
+    ) {
     }
-   this.dispositivos.push(dispositivo);
-   return this.dispositivos;
+
+
+
+    findAll() {
+        return this.dispositivosrepository.find();
+    }
+
+    findOne(id: number) {
+        return this.dispositivosrepository.findOne(id);
+    };
+
+    create(CreateDispositivoDto: CreateDispositivoDto) {
+        const dispositivo: Dispositivo = this.dispositivosrepository.create(CreateDispositivoDto);
+        return this.dispositivosrepository.save(dispositivo);
+
+    }
+
+    update(id: number, UpdateDispositivoDto: UpdateDispositivoDto) {
+        this.dispositivosrepository.update(id, UpdateDispositivoDto);
+        return this.dispositivosrepository.findOne(id);
+      }
+    
+      remove(id: number) {
+        this.dispositivosrepository.delete(id);
+        return `Fue eliminado el item #${id}`;
+      }
+
+
+    
+
 }
+
+
+
+
+/*
+
+
+
+x
 
 remove(id: number): void {
     const dispositivo = this.findOne(id);
@@ -61,7 +71,7 @@ update(id: number, UpdateDispositivoDto: UpdateDispositivoDto): Dispositivos {
     dispositivo.tipo= UpdateDispositivoDto.tipo;
     dispositivo.id_caracteristica= UpdateDispositivoDto.id_caracteristica;
     return dispositivo;
-   } 
+   }
+*/
 
- }
 
