@@ -1,7 +1,4 @@
-export class UpdateDispositivoDto{
+import { CreateDispositivoDto } from "./create-dispositivo.dto";
+import { PartialType } from '@nestjs/mapped-types';
 
-    "id": number;
-    "tipo": string;
-    "nombre": string;
-    "id_caracteristica": number;
-}
+export class UpdateDispositivoDto extends PartialType(CreateDispositivoDto){}
