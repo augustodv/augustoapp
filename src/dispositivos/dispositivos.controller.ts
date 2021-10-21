@@ -34,7 +34,7 @@ export class DispositivosController {
     return this.dispositivosService.remove(+id)  }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() UpdateDispositivoDto: UpdateDispositivoDto): UpdateDispositivoDto {
+  update(@Param('id') id: number, @Body() UpdateDispositivoDto: UpdateDispositivoDto) {
     return this.dispositivosService.update(+id, UpdateDispositivoDto);
   }
 

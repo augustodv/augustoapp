@@ -7,7 +7,7 @@ import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "t
 export class Dispositivo{
 
     @PrimaryGeneratedColumn()
-    private id: number;
+    public id: number;
     @Column()
     private tipo: string;
     @Column()

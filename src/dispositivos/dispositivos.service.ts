@@ -24,13 +24,13 @@ export class DispositivosService {
     }
 
     findOne(id: number) {
-        return this.dispositivosrepository.findOne(id);
+        return this.dispositivosrepository.findOne(id,{relations:['caracteirtica']});
     };
 
-    create(CreateDispositivoDto: CreateDispositivoDto) {
-        const dispositivo: Dispositivo = this.dispositivosrepository.create(CreateDispositivoDto);
-        return this.dispositivosrepository.save(dispositivo);
-
+    async create(CreateDispositivoDto: CreateDispositivoDto) {
+        const dispositivo: Dispositivo = await this.dispositivosrepository.save(this.dispositivosrepository.create(CreateDispositivoDto));
+        return this.findOne(dispositivo.id);
+       
     }
 
     update(id: number, UpdateDispositivoDto: UpdateDispositivoDto) {
