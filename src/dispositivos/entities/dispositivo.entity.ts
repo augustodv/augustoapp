@@ -9,12 +9,12 @@ export class Dispositivo{
     @PrimaryGeneratedColumn()
     public id: number;
     @Column()
-    private tipo: string;
+    public tipo: string;
     @Column()
-    private nombre: string;
+    public nombre: string;
     @Column()
-    private id_caracteristica: number;
-   
+    public id_caracteristica: number;
+
     @Column ({default: true })
     isActive: boolean;
    
