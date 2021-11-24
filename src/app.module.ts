@@ -10,13 +10,17 @@ import { Dispositivo } from './dispositivos/entities/dispositivo.entity';
   imports: [
   TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'admin',
-    database: 'augustoapp',
+    url: process.env.DATABASE_URL,
+    //host: 'localhost',
+    //port: 5432,
+    //username: 'postgres',
+    //password: 'admin',
+    //database: 'augustoapp',
     entities: [Dispositivo,Caracteristica],
     synchronize: true,
+    ssl:{
+      rejectUnauthorized: false,
+    }
   }),DispositivosModule, CaracteristicasModule],
   controllers: [],
   providers: [],
