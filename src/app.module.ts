@@ -14,13 +14,13 @@ import { Dispositivo } from './dispositivos/entities/dispositivo.entity';
     //host: 'localhost',
     //port: 5432,
     //username: 'postgres',
-    //password: 'admin',
+    //password: 'postgres',
     //database: 'augustoapp',
     entities: [Dispositivo,Caracteristica],
     synchronize: true,
-    ssl:{
-      rejectUnauthorized: false,
-    }
+   // ssl:{
+     // rejectUnauthorized: false,
+    //}
   }),DispositivosModule, CaracteristicasModule],
   controllers: [],
   providers: [],

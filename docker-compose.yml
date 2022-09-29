@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  nest:
+    build: . 
+    #image: node:14.17.5-alpine
+    #stdin_open: true
+    #tty: true
+    entrypoint: yarn run start:dev
+    links:
+      - postgres
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env
+  postgres:
+    image: 'postgres:latest'
+    restart: always
+    volumes:
+      - nest-postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=augustoapp
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+
+  adminer: 
+    image: 'adminer:latest'
+    ports: 
+     - '8080:8080'
+
+volumes:
+  nest-postgres:
