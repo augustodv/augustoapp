@@ -40,10 +40,6 @@ jobs:
       run: yarn install
       
     - name: RUN
-      run: yarn start
+      run: yarn start & yarn test:e2e
       env:
-        DATABASE_URL:postgresql://postgres:postgres@postgres:5432/augustoapp
-        
-    - name: Test
-      run: yarn test:e2e
-
+        DATABASE_URL: postgresql://postgres:postgres@postgres:5432/augustoapp
