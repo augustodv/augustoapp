@@ -14,6 +14,20 @@ jobs:
       matrix:
         node-version: [14.17.5]
     
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
     - uses: actions/checkout@v3
 
@@ -25,5 +39,11 @@ jobs:
     - name: Build
       run: yarn install
       
+    - name: RUN
+      run: yarn start
+      env:
+        DATABASE_URL:postgresql://postgres:postgres@postgres:5432/augustoapp
+        
     - name: Test
       run: yarn test:e2e
+
