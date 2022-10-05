@@ -22,6 +22,8 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: augustoapp
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -42,4 +44,4 @@ jobs:
     - name: RUN
       run: yarn start & yarn test:e2e
       env:
-        DATABASE_URL: postgresql://postgres:postgres@postgres:5432/augustoapp
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/augustoapp
