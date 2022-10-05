@@ -44,4 +44,4 @@ jobs:
     - name: RUN
       run: yarn start & yarn test:e2e
       env:
-        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/augustoapp
+        DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/augustoapp
