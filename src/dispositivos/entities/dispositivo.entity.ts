@@ -1,5 +1,6 @@
 
-import { Caracteristica } from "src/caracteristicas/entities/caracteristica.entity";
+//import { Caracteristica } from "src/caracteristicas/entities/caracteristica.entity";
+import { Caracteristica } from "./../../caracteristicas/entities/caracteristica.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

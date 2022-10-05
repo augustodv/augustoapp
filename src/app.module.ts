@@ -6,6 +6,7 @@ import { Caracteristica } from './caracteristicas/entities/caracteristica.entity
 import { Dispositivo } from './dispositivos/entities/dispositivo.entity';
 
 
+
 @Module({
   imports: [
   TypeOrmModule.forRoot({

@@ -1,4 +1,5 @@
-import { Dispositivo } from "src/dispositivos/entities/dispositivo.entity";
+//import { Dispositivo } from "src/dispositivos/entities/dispositivo.entity";
+import { Dispositivo } from "./../../dispositivos/entities/dispositivo.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
