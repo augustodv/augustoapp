@@ -48,3 +48,13 @@ jobs:
       run: yarn start & yarn test:e2e
       env:
         DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/augustoapp
+
+    - name: Run tests and collect coverage
+      run: pytest --cov .
+
+    - name: Upload coverage reports to Codecov
+      run: |
+       $ProgressPreference = 'SilentlyContinue'
+       Invoke-WebRequest -Uri https://uploader.codecov.io/latest/windows/codecov.exe 
+       -Outfile codecov.exe
+       .\codecov.exe -t ${CODECOV_TOKEN}
