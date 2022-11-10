@@ -44,11 +44,17 @@ jobs:
     - name: Build
       run: yarn install
       
-    - name: RUN
-      run: yarn start & yarn test:e2e
+    #- name: RUN E2E
+     # run: yarn start & yarn test:e2e
+     # env:
+      #  DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/augustoapp
+   
+    - name: RUN TEST
+      run: yarn start & yarn test
       env:
         DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/augustoapp
-
+        
+        
     - name: Run tests and collect coverage
       run: pytest --cov .
 
