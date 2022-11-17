@@ -1,4 +1,5 @@
 [![TEST](https://github.com/augustodv/augustoapp/actions/workflows/test.yml/badge.svg)](https://github.com/augustodv/augustoapp/actions/workflows/test.yml)
+[![codecov](https://codecov.io/github/augustodv/augustoapp/branch/main/graph/badge.svg?token=W2RAITFKM9)](https://codecov.io/github/augustodv/augustoapp)
 
 
 <p align="center">
@@ -76,4 +77,3 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 Nest is [MIT licensed](LICENSE).
 
 
-[![codecov](https://codecov.io/github/augustodv/augustoapp/branch/main/graph/badge.svg?token=W2RAITFKM9)](https://codecov.io/github/augustodv/augustoapp)
